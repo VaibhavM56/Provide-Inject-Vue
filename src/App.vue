@@ -1,17 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <comp-a />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import CompA from "./components/CompA.vue";
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  components: { CompA },
+  data() {
+    return {
+      userName: "Raju Rastogi",
+    };
+  },
+  methods: {
+    parentToChildFunc() {
+      console.log("Parent to Child executed");
+    },
+  },
+  provide() {
+    return {
+      userName: this.userName,
+      someFunc: this.parentToChildFunc,
+    };
+  },
+};
 </script>
 
 <style>
